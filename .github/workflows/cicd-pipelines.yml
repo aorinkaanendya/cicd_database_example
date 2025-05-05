@@ -25,5 +25,5 @@ jobs:
 
             echo "Berhasil Masuk ke Folder Aorin."
 
-            docker up -d #Menjalankan docker compose 
+            docker compose up -d #Menjalankan docker compose 
             echo "Berhasil Menjalankan Docker Compose."
