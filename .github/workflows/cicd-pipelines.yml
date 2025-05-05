@@ -20,4 +20,4 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }} # The password for the remote server
           port: ${{ secrets.PORT }}
           script: |
-            echo "Berhasil Connect ke Server"
+            echo "Berhasil Connect ke Server."
