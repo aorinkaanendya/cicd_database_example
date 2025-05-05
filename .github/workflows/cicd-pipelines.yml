@@ -21,3 +21,9 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             echo "Berhasil Connect ke Server."
+            cd /home/aorin
+
+            echo "Berhasil Masuk ke Folder Aorin."
+
+            docker up -d #Menjalankan docker compose 
+            echo "Berhasil Menjalankan Docker Compose."
