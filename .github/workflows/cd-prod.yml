@@ -20,6 +20,16 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           port: 22
           script: |
-            echo "Connected to the server successfully."
-            cd /home/aorin
-            echo "Changed directory to Aorin."
+            echo "✅ Berhasil Konek ke Server"
+            cd /home/das
+
+            if [ -d ".git" ]; then
+              echo "📁 Repo exists, pulling latest changes..."
+              git remote set-url origin https://${{ secrets.GIT_USERNAME }}:${{ secrets.GIT_PAT }}@github.com/${{ secrets.GIT_USERNAME }}/cicd_database_example.git
+              git pull origin main
+            else
+              echo "📥 Cloning repo for the first time..."
+              git clone https://${{ secrets.GIT_USERNAME }}:${{ secrets.GIT_PAT }}@github.com/${{ secrets.GIT_USERNAME }}/cicd_database_example.git .
+            fi
+
+            echo "✅ Deployment finished at $(date)"s
