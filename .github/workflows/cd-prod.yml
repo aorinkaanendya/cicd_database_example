@@ -21,14 +21,14 @@ jobs:
           port: 22
           script: |
             echo "Berhasil Konek ke Server"
-            if [ -d "/home/yis" ]; then
-              echo "Ada folder YIS"
-              cd /home/yis 
-              echo "Berhasil Masuk ke Folder YIS"
+            if [ -d "/home/aorin" ]; then
+              echo "Ada folder AORIN"
+              cd /home/aorin 
+              echo "Berhasil Masuk ke Folder AORIN"
             else
-              echo "Gak ada folder YIS, membuat folder..."
-              mkdir /home/yis
-              cd /home/yis
+              echo "Gak ada folder AORIN, membuat folder..."
+              mkdir /home/aorin
+              cd /home/aorin
             fi
 
             if [ -d ".git" ]; then
