@@ -21,7 +21,7 @@ jobs:
           port: 22
           script: |
             echo "✅ Berhasil Konek ke Server"
-            cd /home/das
+            cd /home/aorin
 
             if [ -d ".git" ]; then
               echo "📁 Repo exists, pulling latest changes..."
