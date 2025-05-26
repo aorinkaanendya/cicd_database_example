@@ -20,16 +20,24 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           port: 22
           script: |
-            echo "✅ Berhasil Konek ke Server"
-            cd /home/aorin
+            echo "Berhasil Konek ke Server"
+            if [ -d "/home/yis" ]; then
+              echo "Ada folder YIS"
+              cd /home/yis 
+              echo "Berhasil Masuk ke Folder YIS"
+            else
+              echo "Gak ada folder YIS, membuat folder..."
+              mkdir /home/yis
+              cd /home/yis
+            fi
 
             if [ -d ".git" ]; then
-              echo "📁 Repo exists, pulling latest changes..."
+              echo "Ada folder .git, melakukan git pull..."
               git remote set-url origin https://${{ secrets.GIT_USERNAME }}:${{ secrets.GIT_PAT }}@github.com/${{ secrets.GIT_USERNAME }}/cicd_database_example.git
               git pull origin main
             else
-              echo "📥 Cloning repo for the first time..."
+              echo "Gak ada folder .git, melakukan git clone..."
               git clone https://${{ secrets.GIT_USERNAME }}:${{ secrets.GIT_PAT }}@github.com/${{ secrets.GIT_USERNAME }}/cicd_database_example.git .
             fi
 
-            echo "✅ Deployment finished at $(date)"s
+            echo "Berhasil Deploy ke Server"
