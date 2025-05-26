@@ -1,0 +1,25 @@
+name: CD Example Production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: CD Example Production
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: SSH Connect
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          port: 22
+          script: |
+            echo "Connected to the server successfully."
+            cd /home/aorin
+            echo "Changed directory to Aorin."
